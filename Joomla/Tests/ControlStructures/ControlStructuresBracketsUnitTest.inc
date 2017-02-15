@@ -30,7 +30,7 @@ function muh()
 	if ($a)
 {
 		echo true;
-	}
+	  }
 }
 
 // NewlineAfterOpenBrace
