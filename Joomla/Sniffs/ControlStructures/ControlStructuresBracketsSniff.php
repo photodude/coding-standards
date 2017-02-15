@@ -156,8 +156,19 @@ class Joomla_Sniffs_ControlStructures_ControlStructuresBracketsSniff implements 
 			else
 			{
 				$blankSpace = substr($prevContent, strpos($prevContent, $phpcsFile->eolChar));
+				$spaces = 0;
 
-				$spaces     = strlen($blankSpace);
+				for($i = 0; $length = strlen($blankSpace), $i < $length; $i++ )
+				{
+					if ($blankSpace[$i] === "\t")
+					{
+						$spaces += 4;
+					}
+					else
+					{
+						$spaces += strlen($blankSpace[$i]);
+					}
+				}
 			}
 
 			$expected = ($tokens[$stackPtr]['level'] * ($this->indent));
