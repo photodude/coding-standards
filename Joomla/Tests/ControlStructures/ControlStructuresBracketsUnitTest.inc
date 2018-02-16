@@ -168,3 +168,35 @@ $this->attachRule(
 		}
 	}
 );
+
+// round 2 Closure indentation tests
+abstract class DatabaseQuery
+{
+	public function format($format)
+	{
+		$query = $this;
+		$args = array_slice(func_get_args(), 1);
+		array_unshift($args, null);
+		$i = 1;
+		$func = function ($match) use ($query, $args, &$i)
+		{
+			if (isset($match[6]) && $match[6] === '%')
+			{
+				return '%';
+			}
+			// No argument required, do not increment the argument index.
+			switch ($match[5])
+			{
+				case 't':
+					return $query->currentTimestamp();
+					break;
+				case 'z':
+					return $query->nullDate(false);
+					break;
+				case 'Z':
+					return $query->nullDate(true);
+					break;
+			}
+		}
+	}
+}
