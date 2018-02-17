@@ -31,7 +31,7 @@ before_script:
 
 script:
   - if [[ $RUN_PHPUNIT == "yes" ]]; then ./vendor/bin/phpunit --filter Joomla vendor/squizlabs/php_codesniffer/tests/AllTests.php; fi
-  - if [[ $RUN_PHPCS == "yes" ]]; then ./vendor/bin/phpcs -sp -vv --extensions=php --ignore=*/vendor/* --standard=Joomla --sniffs=PEAR.ControlStructures.MultiLineCondition */Joomla/Sniffs/Commenting/FunctionCommentSniff.php .; fi
+  - if [[ $RUN_PHPCS == "yes" ]]; then ./vendor/bin/phpcs -sp -vv --extensions=php --ignore=*/vendor/* --standard=Joomla --sniffs=PEAR.ControlStructures.MultiLineCondition $TRAVIS_BUILD_DIR/Joomla/Sniffs/Commenting/FunctionCommentSniff.php .; fi
 
 notifications:
   email: false
