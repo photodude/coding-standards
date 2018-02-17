@@ -169,7 +169,7 @@ $this->attachRule(
 	}
 );
 
-// round 2 Closure indentation tests
+// Round 2 Closure indentation tests
 abstract class DatabaseQuery
 {
 	public function format($format)
